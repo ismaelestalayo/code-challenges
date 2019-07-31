@@ -1,7 +1,5 @@
 # HACK IT 1: 
 
-## Work In Progess
-
 Clasico primer nivel del hackit de la euskal. Como suele ser usual, tenemos que ir al código de la página, y dentro del HTML veremos un tag `<script>` con un código sospechoso. Lo copiamos y lo pasamos por un desmimificador de JavaScript, con lo cual conseguimos el siguiente script:
 
 ```javascript
