@@ -1,7 +1,5 @@
 # HACK IT 2: BIT ROT
 
-## 🚨 Work In Progess 🚨
-
 <p align="center">
 	<img src="main.jpg" width = "100%"/>
 </p>
