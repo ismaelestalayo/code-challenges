@@ -1,8 +1,8 @@
-# HACK IT 1
+# HACK IT 1: 
 
 ## Work In Progess
 
-Clasico primer nivel del hackit de la euskal. Como suele ser usual, tenemos que ir al código de la página, y dentro del HTML veremos un tag `<script>` con un código sospechoso. Lo copiamos y lo pasamos por el primer _embellecedor_ de JavaScript favorito. Esto nos devolverá el siguiente script:
+Clasico primer nivel del hackit de la euskal. Como suele ser usual, tenemos que ir al código de la página, y dentro del HTML veremos un tag `<script>` con un código sospechoso. Lo copiamos y lo pasamos por un desmimificador de JavaScript, con lo cual conseguimos el siguiente script:
 
 ```javascript
 function q(e) {
@@ -56,7 +56,7 @@ function q(e) {
 }
 ```
 
-La clave de todo este hackit está claramente en el `string` a del principio, ya que los caracteres de este son los que mandan que operaciones realizar sobre la contraseña que introduzcamos. Si nos centramos únicamente en dicho string podemos ver cierto patrón que resulta en 13 lineas (lo que probablemente se traduzca en una contraseña de 13 caracteres):
+La clave de todo este hackit está claramente en el _string_ `a` del principio, ya que los caracteres de este son los que mandan que operaciones realizar sobre la contraseña que introduzcamos. Si nos centramos únicamente en dicho string podemos ver cierto patrón que resulta en trece lineas (lo que probablemente se traduzca en una contraseña de trece caracteres):
 
 ```
 >,------------------------------------------------------------------------------------[<+>[-]]
@@ -74,10 +74,12 @@ La clave de todo este hackit está claramente en el `string` a del principio, ya
 ,[<+>[-]][-]+<[>>>++[>+++[>+++++++++++++++++++<-]<-]>>.-------------.-.<<<<[-]<[-]]>[>>>++[>+++[>+++++++++++++++++<-]<-]>>+.[>+>+<<-]>+++++++++++.>--..<----.<<<[-]];
 ```
 
-Podemos ver como sin duda los `-` tienen pinta de ser la clave de este primer hack it, ya que son el carácter principal de las 13 lineas. Si nos fijamos en la operación que realiza el `switch` con dicho caracter, podemos ver que decrementa el valor de un caracter del array c, y después realiza el módulo de dicho resultado con 255 para que el resultado siempre esté entre 0 y 255. Pero hay un problema, el array c tiene un tamaño de 30000
-
-Para conseguir la contraseña solo necesitamos pasar esos valores por un conversor ASCII a texto, y tenemos nuestro primer nivel!
-
+Como primer acercamiento, decidimos contar el número de guiones en cada linea, lo que nos da el siguiente array:
 ```
-84 52 114 112 49 116 83 67 114 49 112 84 --> T4rp1tSCr1pT
+84 52 114 112 49 116 83 67 114 49 112 84
+```
+
+Estos valores se asemejan mucho entre si, y podemos sospechar que puede tratarse de valores ASCII. Para asegurarnos, lo pasámos por un conversor ASCII a texto, y tenemos nuestro primer nivel!
+```
+T4rp1tSCr1pT
 ```
